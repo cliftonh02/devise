@@ -22,9 +22,24 @@ Remember sessions? They give a state to web applications. Web apps are usually s
 How do we plan and create an authentication system?
 
 We need 3 main parts:
-1. Users, with some sort of login credentials
-2. User state management, which we do through Sessions. Is the current user (request) logged in or out? What do they have access to? Who are they?
-3. Views, to allow the user to log in and log out
+ 1. Users, with some sort of login credentials
+ 2. User state management, which we do through Sessions. Is the current user (request) logged in or out? What do they have access to? Who are they?
+ 3. Views, to allow the user to log in and log out
+
+#### MVC Authentication System 
+
+On the MVC side of things within Rails, we need the ability to create users and persist them to database, i.e. creating user records:
+
+##### Users
+
+For users, we need:
+1. User model
+2. Users Controller
+  - new action
+  - create action
+3. User views:
+  - new user signup
+  - email, password, password confirmation
 
 _The Users table_
 
@@ -35,19 +50,8 @@ _The Users table_
 
 
  - how should the password be stored? plaintext? how do we prevent a password from being visible in our application log files?
-
-#### MVC Authentication System 
-
-On the MVC side of things within Rails, we need the ability to create users and persist them to database, i.e. creating user records:
-
-For users, we need:
-1. User model
-2. Users Controller
-  - new action
-  - create action
-3. User views:
-  - new user signup
-  - email, password, password confirmation
+ 
+##### Sessions
 
 To handle logging in, knowing when user is logged in and logged out, we can use sessions:
 
@@ -94,12 +98,12 @@ What else would be nice with an authentication system?
 Before we continue with our authentication system, let's review sessions.
 
 What are sessions?
-— user data (request data) that persists across requests
-— http is a stateless protocol. Sessions make it stateful.
-— where can we store session data?
+ - user data (request data) that persists across requests
+ - http is a stateless protocol. Sessions make it stateful.
+ - where can we store session data?
   — cookies (client-side)
   — database (server-side -- why would we use the db?)
-— what is the data structure session data is stored in?
+ - what is the data structure session data is stored in?
 
 
 - What’s the difference between sessions and cookies?
@@ -110,33 +114,35 @@ What are sessions?
   -should logged in / logged out info be stored in the user table?
   -session usually have a user_id to find the session based on current user
 
-Use cases for cookies
+Use cases for **cookies**
 - time zone
 - password input attempts
 - temporary, readable by users, not that important
 
-Use cases for sessions
+Use cases for **sessions**
 - logged in / logged out
 - shopping cart
 - temporary, more difficult to read and change, a little more important
 
-#### Security issues with Sessions
+### Security issues with Sessions
 
 If a cookie is stored on someones' computer, can’t they alter it?
 
 Sessions are a common target for hackers because, if precautions are not taken, can easily be intercepted and manipulated. When hackers gain control of your session, they can gain authenticated access to an appliation. This allows them to do anything you would normally be able to do, including posting embarressing status updates to your Facebook account that you left logged in at the Apple store.
 
+### Research Session Security Vulnerabilities (10 min research, 10 min talks)
+
 Dive in: in your pods, research security issues that deal with sessions
 
 Take 10 minutes and read chapter 2 on Sessions in the [Rails security guide](http://guides.rubyonrails.org/security.html).
-pod 1 - what are sessions, and how does rails store sessions by default? 
-pod 2 what is session hijacking, and why is it important to force an SSL connection? why should visitors be on a secure LAN?
-pod 3 what are session guidelines presented by the security community? When would you use cookies vs sessions?
-pod 4 what are replay attacks? What is session fixation? 
+ - pod 1: What are sessions, and how does rails store sessions by default? 
+ - pod 2: What is session hijacking, and why is it important to force an SSL connection? why should visitors be on a secure LAN?
+ - pod 3: What are session guidelines presented by the security community? 
+ - pod 4: What are replay attacks? What is session fixation? 
 
 Present to the class what you find!
 
-### Authentication in Rails
+## Authentication in Rails
 
 Wouldn’t it be nice if there was already a gem built to handle authentication, and many of these features, while handling all the potential security pitfalls? Well lucky for us there is!
 
@@ -157,7 +163,7 @@ For each step in our walkthrough of setting up Devise, try to ask the question:
 
 >A mature open source library like Devise can teach us a ton about ruby, rails and software development, if we take the time to dive into the things we do not yet understand.
 
-## Scribble and Devise Setup 
+### Scribble and Devise Setup 
 
 ```
 $ git clone https://github.com/ga-wdi-exercises/scribble.git
