@@ -15,10 +15,11 @@ Most applications have the idea of multiple users. To make a multi-user applicat
 
 What is authentication? 
  - Making sure the user is who they say they are.
- - Common authentication techniques involve asking a user for certain information: something they know, something they have, and something they are. The more you require, the more sure you can be that the user is who they say they are. 
-  - What are some examples in the real world?
+ - Common authentication techniques involve asking a user for certain information: something they _know_, something they _have_, and something they _are_. The more you require, the more sure you can be that the user is who they say they are. 
+
+- What are some examples in the real world?
 <details>
-<summary>Authenticate with...</summary>
+<summary>Authenticate by...</summary>
 <ul>
 <li>Asking for a username and password</li>
  <li>Scanning a RFID identifier</li>
