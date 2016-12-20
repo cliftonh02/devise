@@ -7,7 +7,7 @@
 - Discuss the various security threats related to using sessions
 - Implement User Authentication using the Devise gem
 - Contrast authorization and authentication
-- Implement authentication for certain actions in our app
+- Implement authorization for certain actions in our app
 
 ### Planning a User Authentication System
 
