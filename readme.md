@@ -181,6 +181,8 @@ Take 10 minutes and read chapter 2 on Sessions in the [Rails security guide](htt
 
 Present to the class what you find!
 
+## Break!
+
 ## Authentication in Rails
 
 Wouldn’t it be nice if there was already a gem built to handle authentication, and many of these features, while handling all the potential security pitfalls? Well lucky for us there is!
