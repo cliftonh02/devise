@@ -3,16 +3,17 @@
 ## Learning Objectives
 
 - Plan a user authentication system
-- Contrast the use cases for sessions and permanent storage
+- Contrast the use cases for sessions and cookies
 - Discuss the various security threats related to using sessions
 - Implement User Authentication using the Devise gem
-
+- Contrast authorization and authentication
+- Implement authentication for certain actions in our app
 
 ### Planning a User Authentication System
 
 Most applications have the idea of multiple users. To make a multi-user application, we should first start with defining the term _authentication_
 
-What is authentication? 
+What is _authentication_? 
  - making sure the user is who they say they are.
  - common authentication techniques involve asking a user for certain information: a username and password, a phone unlock code, or something unique like a fingerprint. What about hopping on to a computer at the apple store…sometimes already logged into Facebook! How?
  
@@ -25,7 +26,7 @@ We need 3 main parts:
 2. User state management, which we do through Sessions. Is the current user (request) logged in or out? What do they have access to? Who are they?
 3. Views, to allow the user to log in and log out
 
-The Users table
+_The Users table_
 
 | Users        | 
 | ------------- |
@@ -34,6 +35,8 @@ The Users table
 
 
  - how should the password be stored? plaintext? how do we prevent a password from being visible in our application log files?
+
+#### MVC Authentication System 
 
 On the MVC side of things within Rails, we need the ability to create users and persist them to database, i.e. creating user records:
 
@@ -60,6 +63,7 @@ For sessions, we need:
 2. Session View
  - log in form
 
+#### Questions to consider
 What will the page at "/sessions/new" display?
 What happens when a user clicks "log out"?
 
@@ -72,9 +76,12 @@ What links should be available throughout the app?
 How can we use flash messages to make the authentication system work well for users?
  — flash messages can be used to display when you log in or out successfully
 
+#### Potential Features & Niceties
 One more thing a good authentication system will give the developer: access to the currently logged in user. 
 
-This current_user logic will be defined in the ApplicationController so it is available to all of our controllers. Remember, each controller inherits from the application controller.
+Where might a current_user method be defined, so that all of our controllers have access to it?
+
+>This `current_user` method and logic will likely be defined in the `ApplicationController` so it is available to all of our controllers. Remember, each controller inherits from the application controller.
 
 What else would be nice with an authentication system?
  - Remember me: persist sessions for a certain length of time
