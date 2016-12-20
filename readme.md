@@ -3,7 +3,7 @@
 ## Learning Objectives
 
 - Plan a user authentication system
-- Contrast the use cases for sessions and cookies
+- Differentiate between sessions and cookies, think about use-cases for both
 - Discuss the various security threats related to using sessions
 - Implement User Authentication using the Devise gem
 - Contrast authorization and authentication
@@ -11,15 +11,27 @@
 
 ### Planning a User Authentication System
 
-Most applications have the idea of multiple users. To make a multi-user application, we should first start with defining the term _authentication_
+Most applications have the idea of multiple users. To make a multi-user application, we should first start with defining the term **authentication**
 
-What is _authentication_? 
- - making sure the user is who they say they are.
- - common authentication techniques involve asking a user for certain information: a username and password, a phone unlock code, or something unique like a fingerprint. What about hopping on to a computer at the apple store…sometimes already logged into Facebook! How?
+What is authentication? 
+ - Making sure the user is who they say they are.
+ - Common authentication techniques involve asking a user for certain information: something they know, something they have, and something they are. The more you require, the more sure you can be that the user is who they say they are. 
+  - What are some examples in the real world?
+  <details>
+<summary>Authenticate with...</summary>
+    -Asking for a username and password, 
+    -Scanning a RFID identifier
+    -Asking for a phone unlock code
+    -Using something unique to the person, like a fingerprint or retina scan. 
+ </details>
  
-Remember sessions? They give a state to web applications. Web apps are usually stateless, because they use HTTP. Each request has no knowledge of previous requests. But with sessions, we can persist data across requests and remember things like if we are logged in or not.
+ What about hopping on a computer at the Apple Store…sometimes it's already logged into someone's Facebook! How is this possible when Facebook requires authentication?
+ 
+Remember sessions? They give a state to web applications. Web apps are usually stateless, because they use the HTTP protocol. Each request has no knowledge of previous requests. But with **sessions**, we can persist data across requests and remember things like if we are logged in or not. They are essential to authentication systems for web apps.
 
-How do we plan and create an authentication system?
+Let's say we want to add the ability for multiple users to log in to our Tunr app, so they can save songs to their own playlists and things like that.
+
+How do we plan and create such an authentication system?
 
 We need 3 main parts:
  1. Users, with some sort of login credentials
@@ -68,36 +80,62 @@ For sessions, we need:
  - log in form
 
 #### Questions to consider
-What will the page at "/sessions/new" display?
+
+Where should we display the login form (i.e. the form to create a new session)?
+<details>
+<summary>Answer</summary>
+`sessions#new`
+</details>
+
 What happens when a user clicks "log out"?
+<details>
+<summary>Answer</summary>
+The session is destroyed, and we are back to a "not logged in" state.
+</details>
 
-What happens when a new user is created?
-  — when user is saved, automatically log the user in
+What happens (in terms of a session) when a new user is created?
+<details>
+<summary>Answer</summary>
+when user is saved, automatically log the user in
+</details>
 
-What links should be available throughout the app?
- — Add a link asking user to sign up or login
+What links should be available throughout the app for our users?
+<details>
+<summary>Solution</summary>
+links asking user to sign up or login, as well as log out
+</details>
+
 
 How can we use flash messages to make the authentication system work well for users?
- — flash messages can be used to display when you log in or out successfully
+<details>
+<summary>Answer</summary>
+ — flash messages can be used to display when you log in or out successfully. They give the user immediate feedback that is available on the next request
+ </details>
+ 
 
 #### Potential Features & Niceties
 One more thing a good authentication system will give the developer: access to the currently logged in user. 
 
 Where might a current_user method be defined, so that all of our controllers have access to it?
-
->This `current_user` method and logic will likely be defined in the `ApplicationController` so it is available to all of our controllers. Remember, each controller inherits from the application controller.
+<details>
+<summary>Answer</summary>
+This `current_user` method and logic will likely be defined in the `ApplicationController` so it is available to all of our controllers. Remember, each controller inherits from the application controller.
+</details>
 
 What else would be nice with an authentication system?
+<details>
+<summary>More Authentication System Features</summary>
  - Remember me: persist sessions for a certain length of time
  - Forgot username / forgot password
  - Email confirmation
  - Integration with 3rd party auth (oath2 providers like github, Facebook, twitter, etc)
+</details>
 
 ### Sessions Review
 
 Before we continue with our authentication system, let's review sessions.
 
-What are sessions?
+What are **sessions**?
  - user data (request data) that persists across requests
  - http is a stateless protocol. Sessions make it stateful.
  - where can we store session data?
@@ -114,15 +152,22 @@ What are sessions?
   -should logged in / logged out info be stored in the user table?
   -session usually have a user_id to find the session based on current user
 
-Use cases for **cookies**
+
+<details>
+<summary>Use cases for **cookies**</summary>
 - time zone
 - password input attempts
 - temporary, readable by users, not that important
+</details>
 
-Use cases for **sessions**
+
+
+<details>
+<summary>Use cases for **sessions**</summary>
 - logged in / logged out
 - shopping cart
 - temporary, more difficult to read and change, a little more important
+</details>
 
 ### Security issues with Sessions
 
