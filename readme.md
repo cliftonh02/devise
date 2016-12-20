@@ -1,4 +1,4 @@
-# Devise
+# User Authentication, Sessions and Devise
 
 ## Learning Objectives
 
