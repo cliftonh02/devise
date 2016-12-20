@@ -133,18 +133,18 @@ What are **sessions**?
  - user data (request data) that persists across requests
  - http is a stateless protocol. Sessions make it stateful.
  - where can we store session data?
-  — cookies (client-side)
-  — database (server-side -- why would we use the db?)
+  - cookies (client-side)
+  - database (server-side. Why would we use the db?)
  - what is the data structure session data is stored in?
 
 
 - What’s the difference between sessions and cookies?
-  — session is encrypted
-  — both can be client side, so don’t put secrets in either
+ - session is encrypted
+ - both can be client side, so don’t put secrets in either
 
 - Is a session the same thing as a user?
   -should logged in / logged out info be stored in the user table?
-  -session usually have a user_id to find the session based on current user
+  -sessions and users are related - we usually store the user_id in a session to find the currently logged in user.
 
 
 <details>
@@ -167,7 +167,7 @@ What are **sessions**?
 
 If a cookie is stored on someones' computer, can’t they alter it?
 
-Sessions are a common target for hackers because, if precautions are not taken, can easily be intercepted and manipulated. When hackers gain control of your session, they can gain authenticated access to an appliation. This allows them to do anything you would normally be able to do, including posting embarressing status updates to your Facebook account that you left logged in at the Apple store.
+Sessions are a common target for hackers. If precautions are not taken, sessions can easily be intercepted and manipulated. When hackers gain control of your session, they can gain authenticated access to an appliation, which can lead to all sorts of chaos. This allows them to do anything you would normally be able to do, including posting embarressing status updates to your Facebook account that you left logged in at the Apple store.
 
 ### Research Session Security Vulnerabilities (10 min research, 10 min talks)
 
