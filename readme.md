@@ -15,7 +15,7 @@ Most applications have the idea of multiple users. To make a multi-user applicat
 
 What is authentication? 
  - Making sure the user is who they say they are.
- - Common authentication techniques involve asking a user for certain information: something they _know_, something they _have_, and something they _are_. The more you require, the more sure you can be that the user is who they say they are. 
+ - Common authentication techniques involve asking a user for certain information: something they _know_, something they _have_, and something they _are_. The more you require for user verification, the more confident you can be with your authentication system. 
 
 - What are some examples in the real world?
 <details>
@@ -45,16 +45,14 @@ We need 3 main parts:
 
 On the MVC side of things within Rails, we need the ability to create users and persist them to database, i.e. creating user records:
 
-##### Users
-
-For users, we need:
-1. User model
-2. Users Controller
+For **users**, we need:
+ 1. Users Controller
   - new action
   - create action
-3. User views:
+ 2. User views:
   - new user signup
   - email, password, password confirmation
+ 3. User model
 
 _The Users table_
 
@@ -66,12 +64,10 @@ _The Users table_
 
  - how should the password be stored? plaintext? how do we prevent a password from being visible in our application log files?
  
-##### Sessions
-
 To handle logging in, knowing when user is logged in and logged out, we can use sessions:
 
-For sessions, we need:
-1. Sessions Controller
+For **sessions**, we need:
+ 1. Sessions Controller
   - new
   - create
    - find user by email
@@ -79,7 +75,7 @@ For sessions, we need:
      — adds user_id to session
    - else
       redirect to login form, flash message email or login invalid
-2. Session View
+ 2. Session View
  - log in form
 
 #### Questions to consider
