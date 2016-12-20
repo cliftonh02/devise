@@ -17,15 +17,17 @@ What is authentication?
  - Making sure the user is who they say they are.
  - Common authentication techniques involve asking a user for certain information: something they know, something they have, and something they are. The more you require, the more sure you can be that the user is who they say they are. 
   - What are some examples in the real world?
-  <details>
+<details>
 <summary>Authenticate with...</summary>
-    -Asking for a username and password, 
-    -Scanning a RFID identifier
-    -Asking for a phone unlock code
-    -Using something unique to the person, like a fingerprint or retina scan. 
+<ul>
+<li>Asking for a username and password</li>
+ <li>Scanning a RFID identifier</li>
+<li>Asking for a phone unlock code</li>
+<li>Using something unique to the person, like a fingerprint or retina scan. </li>
+</ul>
  </details>
  
- What about hopping on a computer at the Apple Store…sometimes it's already logged into someone's Facebook! How is this possible when Facebook requires authentication?
+What about hopping on a computer at the Apple Store…sometimes it's already logged into someone's Facebook! How is this possible when Facebook requires authentication?
  
 Remember sessions? They give a state to web applications. Web apps are usually stateless, because they use the HTTP protocol. Each request has no knowledge of previous requests. But with **sessions**, we can persist data across requests and remember things like if we are logged in or not. They are essential to authentication systems for web apps.
 
@@ -81,34 +83,29 @@ For sessions, we need:
 
 #### Questions to consider
 
-Where should we display the login form (i.e. the form to create a new session)?
 <details>
-<summary>Answer</summary>
-`sessions#new`
+<summary>Where should we display the login form (i.e. the form to create a new session)?</summary>
+`sessions#new` (notice we are not placing log in / log out functionality in the Users Controller. Why?)
 </details>
 
-What happens when a user clicks "log out"?
 <details>
-<summary>Answer</summary>
+<summary>What happens when a user clicks "log out"?</summary>
 The session is destroyed, and we are back to a "not logged in" state.
 </details>
 
-What happens (in terms of a session) when a new user is created?
 <details>
-<summary>Answer</summary>
+<summary>What happens (in terms of a session) when a new user is created?</summary>
 when user is saved, automatically log the user in
 </details>
 
-What links should be available throughout the app for our users?
 <details>
-<summary>Solution</summary>
+<summary>What links should be available throughout the app for our users?</summary>
 links asking user to sign up or login, as well as log out
 </details>
 
 
-How can we use flash messages to make the authentication system work well for users?
 <details>
-<summary>Answer</summary>
+<summary>How can we use flash messages to make the authentication system work well for users?</summary>
  — flash messages can be used to display when you log in or out successfully. They give the user immediate feedback that is available on the next request
  </details>
  
